@@ -6,8 +6,10 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface MyApi {
     @GET("getCovid19InfStateJson")
-    Call<CovidResponse> getCovid();
+    Call<CovidResponse> getCovid(@Query("serviceKey") String serviceKey);
 }
