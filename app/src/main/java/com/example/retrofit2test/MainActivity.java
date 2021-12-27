@@ -2,6 +2,7 @@ package com.example.retrofit2test;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         createDt = findViewById(R.id.createDt);
         updateDt = findViewById(R.id.updateDt);
 
-        MyApi api = RetrofitClient.getRetrofit().create(MyApi.class);
+        MyApi api = RetrofitClient.getCovidRetrofit().create(MyApi.class);
 
         Call<CovidResponse> call = api.getCovid(BuildConfig.COVID_API_KEY);
         call.enqueue(new Callback<CovidResponse>() {
@@ -57,5 +58,8 @@ public class MainActivity extends AppCompatActivity {
                 updateDt.setText(t.getMessage());
             }
         });
+
+        //TODO GEOCODER
+
     }
 }
