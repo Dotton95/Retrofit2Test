@@ -6,92 +6,92 @@ import java.util.List;
 
 public class WeatherResponse {
     @SerializedName("base")
-    String base;
+    public String base;
     @SerializedName("clouds")
-    Clouds clouds;
+    public Clouds clouds;
     @SerializedName("coc")
-    int cod;
+    public Integer cod;
     @SerializedName("dt")
-    int dt;
+    public Integer dt;
     @SerializedName("id")
-    int id;
+    public Integer id;
     @SerializedName("main")
-    Main main;
+    public Main main;
     @SerializedName("name")
-    String name;
+    public String name;
     @SerializedName("rain")
-    Rain rain;
+    public Rain rain;
     @SerializedName("snow")
-    Snow snow;
+    public Snow snow;
     @SerializedName("sys")
-    Sys sys;
+    public Sys sys;
     @SerializedName("timezone")
-    int timezone;
+    public Integer timezone;
     @SerializedName("visibility")
-    int visibility;
+    public Integer visibility;
     @SerializedName("weather")
-    List<Weather> weather;
+    public List<Weather> weather;
     @SerializedName("wind")
-    Wind wind;
+    public Wind wind;
 
     public class Clouds{
         @SerializedName("all")
-        int all;
+        public Integer all;
     }
     public class Coord{
         @SerializedName("lat")
-        double lat;
+        public Double lat;
         @SerializedName("lon")
-        double lon;
+        public Double lon;
     }
     public class Main{
         @SerializedName("feels_like")
-        double feels_like;
+        public Double feels_like;
         @SerializedName("humidity")
-        int humidity;
+        public Integer humidity;
         @SerializedName("pressure")
-        int pressure;
+        public Integer pressure;
         @SerializedName("temp")
-        double temp;
+        public Double temp;
         @SerializedName("temp_max")
-        double temp_max;
+        public Double temp_max;
         @SerializedName("temp_min")
-        double temp_min;
+        public Double temp_min;
     }
     public class Rain{
         @SerializedName("1h")
-        double h1;
+        public Double h1;
     }
     public class Snow{
         @SerializedName("1h")
-        double h1;
+        public Double h1;
     }
     public class Sys{
         @SerializedName("country")
-        String country;
+        public String country;
         @SerializedName("id")
-        int id;
+        public Integer id;
         @SerializedName("sunrise")
-        int sunrise;
+        public Integer sunrise;
         @SerializedName("sunset")
-        int sunset;
+        public Integer sunset;
         @SerializedName("type")
-        int type;
+        public Integer type;
     }
     public class Wind{
         @SerializedName("deg")
-        int deg;
+        public Integer deg;
         @SerializedName("speed")
-        double speed;
+        public Double speed;
     }
     public class Weather{
         @SerializedName("description")
-        String description;
+        public String description;
         @SerializedName("icon")
-        String icon;
+        public String icon;
         @SerializedName("id")
-        int id;
+        public Integer id;
         @SerializedName("main")
-        String main;
+        public String main;
     }
 }

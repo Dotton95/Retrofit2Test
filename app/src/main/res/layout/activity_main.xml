@@ -82,7 +82,7 @@
         android:id="@+id/updateDt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="updateDt = "
+        android:text="현재날씨 = "
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/createDt"
