@@ -14,7 +14,7 @@ public class RetrofitClient {
     private static Retrofit retrofit = null;
 
     private RetrofitClient(){}
-
+//XML
 //    public static Retrofit getCovidRetrofit() {
 //
 //        Gson gson = new GsonBuilder()
@@ -28,21 +28,21 @@ public class RetrofitClient {
 //        }
 //        return retrofit;
 //    }
-
-    public static Retrofit getWeatherRetrofit(){
+//
+    private static  Retrofit initRetrofit(String base_url){
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(interceptor)
                 .build();
-
         if(retrofit == null){
             retrofit = new Retrofit.Builder()
-                    .baseUrl(WEATHER_URL)
+                    .baseUrl(base_url)
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(client)
                     .build();
         }
         return retrofit;
     }
+    public static Retrofit getWeatherRetrofit() { return initRetrofit(WEATHER_URL); }
 }
