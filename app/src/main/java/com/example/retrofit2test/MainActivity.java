@@ -7,10 +7,9 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.retrofit2test.model.CovidResponse;
-import com.example.retrofit2test.model.WeatherResponse;
+import com.example.retrofit2test.model.Covid.CovidResponse;
+import com.example.retrofit2test.model.Weather.WeatherResponse;
 
 import java.io.IOException;
 import java.util.List;
@@ -44,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
             List<Address> address = geo.getFromLocationName(" 경기도 하남시",2);
             double lat = Math.round(address.get(0).getLatitude()*100)/100;
             double lon = Math.round(address.get(0).getLongitude()*100)/100;
-
             MyApi weatherApi = RetrofitClient.getWeatherRetrofit().create(MyApi.class);
 
             Call<WeatherResponse> weatherCall = weatherApi.getWeatherLatLon(lat+"",lon+"",BuildConfig.WEATHER_API_KEY);
@@ -69,35 +67,31 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-//        MyApi api = RetrofitClient.getCovidRetrofit().create(MyApi.class);
+        MyApi api = RetrofitClient.getCovidRetrofit().create(MyApi.class);
 
-//        Call<CovidResponse> call = api.getCovid(BuildConfig.COVID_API_KEY);
-//        call.enqueue(new Callback<CovidResponse>() {
-//            @Override
-//            public void onResponse(Call<CovidResponse> call, Response<CovidResponse> response) {
-//                if(!response.isSuccessful()){
-//                    //임시
-//                    deathCnt.setText(response.message()+response.errorBody()+response.code()+"");
-//                    return;
-//                }
-//                CovidResponse test = response.body();
-//                CovidResponse.Item item = test.response.body.items.item.get(0);
-//                seq.setText(item.seq+"");
-//                stateDt.setText(item.stateDt+"");
-//                stateTime.setText(item.stateTime+"");
-//                decideCnt.setText(item.decideCnt+"");
-//                deathCnt.setText(item.deathCnt+"");
-//                accExamCnt.setText(item.accExamCnt+"");
-//                accDefRate.setText(item.accDefRate+"");
-//                createDt.setText(item.createDt+"");
-//                updateDt.setText(item.updateDt+"");
-//            }
-//
-//            @Override
-//            public void onFailure(Call<CovidResponse> call, Throwable t) {
-//                updateDt.setText(t.getMessage());
-//            }
-//        });
+        Call<CovidResponse> call = api.getCovid(BuildConfig.COVID_API_KEY);
+        call.enqueue(new Callback<CovidResponse>() {
+            @Override
+            public void onResponse(Call<CovidResponse> call, Response<CovidResponse> response) {
+                if(response.isSuccessful()){
+                    CovidResponse test = response.body();
+                    seq.setText(test.body.items.item.get(0).seq);
+                    stateDt.setText(test.body.items.item.get(0).stateDt);
+                    stateTime.setText(test.body.items.item.get(0).stateTime);
+                    decideCnt.setText(test.body.items.item.get(0).decideCnt);
+                    deathCnt.setText(test.body.items.item.get(0).deathCnt);
+                    accExamCnt.setText(test.body.items.item.get(0).accExamCnt);
+                    accDefRate.setText(test.body.items.item.get(0).accDefRate);
+                    createDt.setText(test.body.items.item.get(0).createDt);
+                    updateDt.setText(test.body.items.item.get(0).updateDt);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CovidResponse> call, Throwable t) {
+                call.cancel();
+            }
+        });
 
     }
 }
