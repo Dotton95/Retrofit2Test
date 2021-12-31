@@ -5,4 +5,4 @@
 2. 코로나19 감염현황 ( XML ) - getCovidRetrofit
 
 
-* XML은 TiKXML 라이브러리 이용
+* XML은 Tikxml 라이브러리 이용
