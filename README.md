@@ -1,5 +1,8 @@
-# Retrofit2Tes
+# Retrofit2Test - JAVA
 
-JSON -> 기상정보
+1. 기상정보 ( JSON ) - getWeatherRetrofit
 
-XML -> 코로나19 감염현황
+2. 코로나19 감염현황 ( XML ) - getCovidRetrofit
+
+
+* XML은 Tikxml 라이브러리 이용
